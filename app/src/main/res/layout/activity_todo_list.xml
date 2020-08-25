@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="viewModel"
+            type="com.eugene.roman.todolist.ui.ToDoListViewModel" />
+
+        <variable
+            name="activity"
+            type="com.eugene.roman.todolist.ui.ToDoListActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTodoList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNewTask" />
+
+        <EditText
+            android:id="@+id/etNewTask"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/type_your_note_here"
+            app:layout_constraintEnd_toStartOf="@+id/bAddNewTask"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{activity.textWatcher}" />
+
+        <Button
+            android:id="@+id/bAddNewTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:enabled="@{viewModel.isNewToDoRecordCanBeSaved}"
+            android:onClick="@{() -> viewModel.addNote(etNewTask.getText().toString()) | etNewTask.getText().clear()}"
+            android:text="@string/add"
+            app:layout_constraintBottom_toBottomOf="@+id/etNewTask"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etNewTask" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

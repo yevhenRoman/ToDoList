@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ToDo List</string>
+    <string name="No_Internet_Some_tasks_may_">No Internet. Some tasks may be missing!</string>
+    <string name="Cloud_tasks_can_be_edited_only_locally_and_during">Cloud tasks can be edited only locally and during current session.</string>
+    <string name="type_your_note_here">Type your note here</string>
+    <string name="add">Add</string>
+    <string name="Failed_to_load_data_from">Failed to load data from Cloud :(</string>
+</resources>
